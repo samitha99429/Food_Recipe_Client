@@ -36,7 +36,7 @@ const Register = () => {
     setErrorMessage('');
 
     try {
-      const response = await axios.post('https://food-recipe-api-mu.vercel.app/api/auth/register', {
+      const response = await axios.post('https://food-recipe-mis1xc739-samithas-projects-66fa87b4.vercel.app/api/auth/register', {
         firstname,
         lastname,
         email,
