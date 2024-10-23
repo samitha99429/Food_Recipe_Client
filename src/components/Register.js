@@ -36,7 +36,9 @@ const Register = () => {
     setErrorMessage('');
 
     try {
-      await axios.post('https://food-recipe-api-mu.vercel.app/auth/register', { firstname, lastname, email, phonenumber, password });
+      await axios.post('https://food-recipe-api-mu.vercel.app/auth/register', { firstname, lastname, email, phonenumber, password },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       navigate('/login');
     } catch (err) {
       console.error(err);
