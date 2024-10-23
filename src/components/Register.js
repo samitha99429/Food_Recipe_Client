@@ -36,7 +36,7 @@ const Register = () => {
     setErrorMessage('');
 
     try {
-      const response = await axios.post('https://foo-recipe-api.onrender.com/api/auth/register', {
+      const response = await axios.post('https://foo-recipe-api.onrender.com/auth/register', {
         firstname,
         lastname,
         email,
