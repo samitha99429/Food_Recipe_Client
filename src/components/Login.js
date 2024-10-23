@@ -13,15 +13,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://food-recipe-api-mu.vercel.app/api/auth/login', { email, password });
+      const response = await axios.post(
+        'https://food-recipe-api-mu.vercel.app/api/auth/login', 
+        { email, password },
+        { withCredentials: true } // Ensure credentials are sent with the request
+      );
+  
       localStorage.setItem('token', response.data.token);
-      console.log(response.data.token);
-      window.location.reload('/homepage');
+      window.location.href = '/homepage';
     } catch (err) {
       alert('Invalid email or password');
       setError('Invalid email or password');
     }
   };
+  
 
   return (
 
