@@ -34,9 +34,8 @@ const Register = () => {
       return;
     }
     setErrorMessage('');
-
     try {
-      const response = await axios.post('https://foo-recipe-api.onrender.com/auth/register', {
+      const response = await axios.post('https://foo-recipe-api.onrender.com/api/auth/register', {
         firstname,
         lastname,
         email,
@@ -48,15 +47,22 @@ const Register = () => {
         },
         withCredentials: true, // Send cookies along with the request
       });
-
+    
+      // Log the response to see what is coming back
+      console.log('Response:', response);
+    
       if (response.status === 201) {
+        console.log('Registration successful, navigating to login...');
         navigate('/login');
+      } else {
+        console.log('Unexpected status code:', response.status);
       }
     } catch (err) {
-      console.error(err);
+      // Log the error object to see if the request failed
+      console.error('Error:', err);
       setErrorMessage('Registration failed, please try again');
     }
-  };
+  }    
   return (
     <>
       <div class="container d-flex justify-content-center align-items-center min-vh-100">
