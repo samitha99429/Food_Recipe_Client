@@ -36,16 +36,27 @@ const Register = () => {
     setErrorMessage('');
 
     try {
-      await axios.post('https://food-recipe-api-mu.vercel.app/api/auth/register', { firstname, lastname, email, phonenumber, password },
+      const response = await axios.post('https://food-recipe-api-mu.vercel.app/api/auth/register', {
+        firstname,
+        lastname,
+        email,
+        phonenumber,
+        password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true, // Send cookies along with the request
+      });
 
-      );
-      navigate('/login');
+      if (response.status === 201) {
+        navigate('/login');
+      }
     } catch (err) {
       console.error(err);
       setErrorMessage('Registration failed, please try again');
     }
   };
-
   return (
     <>
       <div class="container d-flex justify-content-center align-items-center min-vh-100">
