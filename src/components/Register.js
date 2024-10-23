@@ -37,7 +37,7 @@ const Register = () => {
 
     try {
       await axios.post('https://food-recipe-api-mu.vercel.app/auth/register', { firstname, lastname, email, phonenumber, password },
-        { headers: { Authorization: `Bearer ${token}` } }
+
       );
       navigate('/login');
     } catch (err) {
